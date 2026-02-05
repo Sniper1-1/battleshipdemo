@@ -3,6 +3,9 @@ const statusText = document.getElementById("status");
 const shotsText = document.getElementById("shots");
 const resetBtn = document.getElementById("resetBtn");
 
+let gameOver = false;
+
+
 
 for (let row = 0; row < 10; row++) {
     for (let col = 0; col < 10; col++) {
@@ -18,7 +21,7 @@ for (let row = 0; row < 10; row++) {
 }
 
 function makeMove(cell) {
-    if (cell.classList.contains("hit") || cell.classList.contains("miss")) {
+    if (cell.classList.contains("hit") || cell.classList.contains("miss" ) || gameOver) {
         return;
     }
 
@@ -39,6 +42,7 @@ function makeMove(cell) {
         shotsText.textContent = `Shots fired: ${data.shots}`;
 
        if (data.gameOver) {
+            gameOver = true;
             resetBtn.style.display = "inline-block";
         }
     });
@@ -55,6 +59,7 @@ function restartGame() {
             statusText.textContent = "Remaining ships: 3";
             shotsText.textContent = "Shots fired: 0";
             resetBtn.style.display = "none";
+            gameOver = false;
         });
 }
 
