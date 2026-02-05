@@ -1,6 +1,7 @@
 const grid = document.getElementById("grid");
 const statusText = document.getElementById("status");
 const shotsText = document.getElementById("shots");
+const resetBtn = document.getElementById("resetBtn");
 
 
 for (let row = 0; row < 10; row++) {
@@ -37,25 +38,26 @@ function makeMove(cell) {
         statusText.textContent = `Remaining ships: ${data.remainingShips}`;
         shotsText.textContent = `Shots fired: ${data.shots}`;
 
-        if (data.gameOver) {
-            setTimeout(() => {
-                alert("All ships destroyed! Restarting game...");
-                restartGame();
-            }, 300);
+       if (data.gameOver) {
+            resetBtn.style.display = "inline-block";
         }
     });
 }
 
+resetBtn.addEventListener("click", restartGame);
 function restartGame() {
     fetch("game.php?reset=1")
         .then(() => {
             document.querySelectorAll(".cell").forEach(cell => {
                 cell.classList.remove("hit", "miss");
             });
+
             statusText.textContent = "Remaining ships: 3";
             shotsText.textContent = "Shots fired: 0";
+            resetBtn.style.display = "none";
         });
 }
+
 window.onload = () => {
     fetch("game.php?reset=1");
 };
