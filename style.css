@@ -1,29 +1,86 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* optional if you never want scrolling */
+}
+
+
 body {
     font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #b3e5fc, #81d4fa);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.game-container {
+    max-width: 500px;
+    margin: 40px auto;
     text-align: center;
+}
+
+h1 {
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.info-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.info-panel p {
+    margin: 0;
+    font-size: 14px;
+}
+
+#resetBtn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #1976d2;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#resetBtn:hover {
+    background-color: #1565c0;
 }
 
 #grid {
     display: grid;
-    grid-template-columns: repeat(10, 40px);
-    grid-template-rows: repeat(10, 40px);
-    gap: 2px;
+    grid-template-columns: repeat(10, 42px);
+    grid-template-rows: repeat(10, 42px);
+    gap: 4px;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .cell {
-    width: 40px;
-    height: 40px;
-    background-color: lightblue;
-    border: 1px solid #333;
+    width: 42px;
+    height: 42px;
+    background-color: #b3e5fc;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: black 1px solid;
+}
+
+.cell:hover {
+    transform: scale(1.05);
 }
 
 .cell.hit {
-    background-color: red;
+    background-color: #e53935;
 }
 
 .cell.miss {
-    background-color: white;
+    background-color: #eceff1;
 }
