@@ -16,6 +16,7 @@ if (isset($_GET["reset"])) {
 if (!isset($_SESSION["ships"])) {
     $_SESSION["ships"] = [];
     $_SESSION["hits"] = [];
+    $_SESSION["shots"] = 0;
 
     foreach ($shipSizes as $size) {
         placeShip($size);
@@ -25,6 +26,10 @@ if (!isset($_SESSION["ships"])) {
 $row = intval($_POST["row"]);
 $col = intval($_POST["col"]);
 $key = "$row,$col";
+// Prevent double-counting the same cell
+if (!in_array($key, $_SESSION["hits"])) {
+    $_SESSION["shots"]++;
+}
 
 $result = "miss";
 
@@ -55,8 +60,10 @@ foreach ($_SESSION["ships"] as $ship) {
 echo json_encode([
     "result" => $result,
     "remainingShips" => $remainingShips,
+    "shots" => $_SESSION["shots"],
     "gameOver" => $remainingShips === 0
 ]);
+
 
 function placeShip($size) {
     global $gridSize;

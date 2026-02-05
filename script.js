@@ -1,5 +1,7 @@
 const grid = document.getElementById("grid");
 const statusText = document.getElementById("status");
+const shotsText = document.getElementById("shots");
+
 
 for (let row = 0; row < 10; row++) {
     for (let col = 0; col < 10; col++) {
@@ -33,6 +35,7 @@ function makeMove(cell) {
         }
 
         statusText.textContent = `Remaining ships: ${data.remainingShips}`;
+        shotsText.textContent = `Shots fired: ${data.shots}`;
 
         if (data.gameOver) {
             setTimeout(() => {
@@ -50,6 +53,7 @@ function restartGame() {
                 cell.classList.remove("hit", "miss");
             });
             statusText.textContent = "Remaining ships: 3";
+            shotsText.textContent = "Shots fired: 0";
         });
 }
 window.onload = () => {
