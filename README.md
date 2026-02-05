@@ -1,5 +1,6 @@
 Iteration 1:
 * Ships properly get placed randomly so that they're not always in the same place and displays number of ships remaining. <br>
+
 Iteration 2:
 * Shot count is tracked and displayed, and the game doesn't automatically reset once completed, allowing the user to have time to process their stats. Also stops user from continuing to shoot.
 
