@@ -84,3 +84,22 @@ h1 {
 .cell.miss {
     background-color: #eceff1;
 }
+
+.win-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.win-box {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+}

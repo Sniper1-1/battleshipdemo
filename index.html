@@ -13,11 +13,20 @@
     <div class="info-panel">
         <p id="status">Remaining ships: 3</p>
         <p id="shots">Shots fired: 0</p>
-        <button id="resetBtn" style="display:none;">New Game</button>
+        <button id="resetBtn">New Game</button>
     </div>
 
     <div id="grid"></div>
 </div>
+
+<div id="winMessage" class="win-overlay">
+    <div class="win-box">
+        <h2>🎉 You Win!</h2>
+        <p>All ships have been sunk!</p>
+        <button onclick="restartGame()">Play Again</button>
+    </div>
+</div>
+
 
 <script src="script.js"></script>
 </body>
